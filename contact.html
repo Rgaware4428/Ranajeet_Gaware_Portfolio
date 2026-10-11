@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me — Ranajeet Gaware | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0B0E14;
+      --card-bg: #141824;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --text-secondary: #D1D5DB;
+      --border-color: rgba(255, 255, 255, 0.12);
+      --nav-bg: rgba(11, 14, 20, 0.85);
+      --nav-pill-bg: #1E2433;
+      --accent-color: #111111;
+      --accent-light: rgba(225, 29, 72, 0.15);
+      --accent-purple: #8B5CF6;
+      --transition-speed: 0.3s;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --card-border: rgba(0, 0, 0, 0.08);
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --text-secondary: #334155;
+      --border-color: #E2E8F0;
+      --nav-bg: rgba(248, 250, 252, 0.9);
+      --nav-pill-bg: #E2E8F0;
+      --accent-color: #111111;
+      --accent-light: #FFE4E6;
+      --accent-purple: #7C3AED;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+      text-align: left;
+    }
+       /* CUSTOM MOUSE CURSOR EFFECT */
+    body {
+      cursor: default;
+    }
+    a, button, input, select, textarea, .project-card-modern, .filter-btn {
+      cursor: pointer;
+    }
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--text-main);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      z-index: 99999;
+      mix-blend-mode: difference;
+    }
+    .custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-main);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 100000;
+    }
+    body:hover .custom-cursor {
+      opacity: 1;
+    }
+    body.cursor-hover .custom-cursor {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #38BDF8;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+  <!-- CUSTOM MOUSE CURSOR -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-dot"></div>
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: left;
+    }
+    .content-container {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 20px;
+      z-index: 1000;
+      width: 100%;
+      padding: 0 24px;
+      margin-bottom: 40px;
+    }
+    .nav-bar {
+      max-width: 1140px;
+      margin: 0 auto;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .nav-brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .nav-center-pill {
+      background-color: var(--nav-pill-bg);
+      border-radius: 999px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pill-link {
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .pill-link:hover {
+      color: var(--text-main);
+    }
+    .pill-link.active {
+      background-color: var(--text-main);
+      color: var(--bg-color);
+      font-weight: 600;
+    }
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .theme-toggle-btn {
+      background-color: var(--nav-pill-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .case-hero {
+      padding: 40px 0 20px;
+      text-align: left;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--accent-light);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .case-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .case-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 0 24px 0;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin: 36px 0 48px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      height: 100%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .info-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+    .info-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent-color);
+      color: #FFF;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      width: fit-content;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    footer {
+      padding: 60px 0 40px;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+    .footer-cta {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .footer-email {
+      font-size: 1.1rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      display: inline-block;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      header.site-header { top: 10px; padding: 0 12px; }
+      .nav-center-pill { display: none; }
+      .case-title { font-size: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- CUSTOM MOUSE CURSOR -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-dot"></div>
+
+  <!-- FLOATING HEADER NAVIGATION -->
+  <header class="site-header">
+    <div class="nav-bar">
+      <a href="index.html" class="nav-brand">Ranajeet Gaware</a>
+
+      <nav class="nav-center-pill">
+        <a href="index.html" class="pill-link">Home</a>
+       <a href="work.html" class="pill-link">Work</a>
+   
+        <a href="about.html" class="pill-link">About</a>
+   
+        <a href="contact.html" class="pill-link active">Contact</a>
+      </nav>
+
+      <div class="nav-right-group">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <span id="theme-icon">☀️</span> <span id="theme-label">Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container content-container">
+
+    <section class="case-hero">
+     <!-- <span class="hero-badge style{color:white;}">Get In Touch</span>-->
+      <h1 class="case-title">Let's Connect &amp; Collaborate</h1>
+      <p class="case-subtitle">
+        I am always open to discussing new design projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out through any of the channels below.
+      </p>
+    </section>
+
+    <div class="contact-grid">
+      <!-- Email Card -->
+      <div class="info-card">
+        <div>
+          <div class="info-card-title">Direct Email</div>
+          <p>Drop me a line anytime for project inquiries, collaborations, or casual chats.</p>
+        </div>
+        <a href="mailto:rgaware@outlook.com" class="btn-primary">rgaware@outlook.com</a>
+      </div>
+
+      <!-- LinkedIn Card -->
+      <div class="info-card">
+        <div>
+          <div class="info-card-title">LinkedIn Profile</div>
+          <p>Connect with me professionally, view my career history, and endorsements.</p>
+        </div>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Connect on LinkedIn</a>
+      </div>
+
+      <!-- Behance Card -->
+      <div class="info-card">
+        <div>
+          <div class="info-card-title">Behance Portfolio</div>
+          <p>Explore detailed case studies, UI/UX explorations, and visual design works.</p>
+        </div>
+        <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" class="btn-primary">View Behance</a>
+      </div>
+
+      <!-- Dribbble Card -->
+      <div class="info-card">
+        <div>
+          <div class="info-card-title">Dribbble Shots</div>
+          <p>Check out my bite-sized UI interactions, snapshots, and design shots.</p>
+        </div>
+        <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" class="btn-primary">View Dribbble</a>
+      </div>
+    </div>
+
+    <!-- Resume Section -->
+    <div class="info-card" style="margin-bottom: 60px;" >
+      <div>
+        <div class="info-card-title">Resume</div>
+        <p>Looking for a summary of my work experience, skills, and educational background? Download my resume below.</p>
+      </div>
+      <a href="Ranajeet_Gaware_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary">📄 Download Resume</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <h2 class="footer-cta">Would you like to get in touch?</h2>
+      <a href="mailto:mailto:rgaware@outlook.com" class="footer-btn">Get in touch</a>
+    </div>
+  </footer>
+
+  <script>
+     // CUSTOM CURSOR MOVEMENT & HOVER
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.custom-cursor-dot');
+
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    });
+
+    document.querySelectorAll('a, button, .project-card-modern, input, select').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeLabel = document.getElementById('theme-label');
+    const htmlElement = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      
+      if (newTheme === 'dark') {
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light';
+      } else {
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark';
+      }
+    });
+  </script>
+</body>
+</html>

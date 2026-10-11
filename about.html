@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Ranajeet Gaware | Senior AI Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* DESIGN SYSTEM VARIABLES */
+    :root {
+      --bg-color: #F8F9FA;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --card-border: rgba(0, 0, 0, 0.08);
+      --glass-bg: rgba(255, 255, 255, 0.75);
+      --glass-border: rgba(0, 0, 0, 0.1);
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --text-secondary: #334155;
+      --accent: #2563EB;
+      --accent-glow: rgba(37, 99, 235, 0.15);
+      --nav-bg: rgba(255, 255, 255, 0.8);
+      --nav-inner-bg: rgba(241, 245, 249, 0.8);
+      --btn-bg: #0F172A;
+      --btn-text: #FFFFFF;
+      --btn-hover: #1E293B;
+      --partner-border: rgba(0, 0, 0, 0.08);
+      --transition-speed: 0.35s;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #030712;
+      --card-bg: rgba(17, 24, 39, 0.6);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --glass-bg: rgba(17, 24, 39, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-secondary: #CBD5E1;
+      --accent: #38BDF8;
+      --accent-glow: rgba(56, 189, 248, 0.2);
+      --nav-bg: rgba(15, 23, 42, 0.75);
+      --nav-inner-bg: rgba(30, 41, 59, 0.7);
+      --btn-bg: #F8FAFC;
+      --btn-text: #030712;
+      --btn-hover: #E2E8F0;
+      --partner-border: rgba(255, 255, 255, 0.08);
+    }
+
+    /* RESET & BASE */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    }
+       /* CUSTOM MOUSE CURSOR EFFECT */
+    body {
+      cursor: default;
+    }
+    a, button, input, select, textarea, .project-card-modern, .filter-btn {
+      cursor: pointer;
+    }
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--text-main);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      z-index: 99999;
+      mix-blend-mode: difference;
+    }
+    .custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-main);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 100000;
+    }
+    body:hover .custom-cursor {
+      opacity: 1;
+    }
+    body.cursor-hover .custom-cursor {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #38BDF8;
+    }
+    body.menu-open {
+      overflow: hidden;
+    }
+    h1, h2, h3, h4, .brand-name, .section-heading, .cta-title {
+      font-family: Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    .nav-socials {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .social-link {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+    .social-link:hover {
+      color: var(--text-main);
+    }
+    /* CONTAINER */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* FLOATING GLASS NAVIGATION */
+    header {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      padding: 0 24px;
+      margin-bottom: 50px;
+    }
+    .nav-pill {
+      max-width: 1140px;
+      margin: 0 auto;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+      transition: all var(--transition-speed) ease;
+    }
+    .brand-name {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--nav-inner-bg);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border);
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .theme-toggle-btn {
+      background: var(--nav-inner-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .theme-toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    /* MOBILE TRIGGER */
+    .mobile-menu-trigger {
+      display: none;
+      background: var(--nav-inner-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* MOBILE NAV MODAL */
+    .mobile-nav-modal {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-color);
+      color: var(--text-main);
+      z-index: 9999;
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease-in-out;
+    }
+    .mobile-nav-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 60px;
+    }
+    .mobile-close-btn {
+      background: var(--nav-inner-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu-link {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* HERO PROFILE AVATAR */
+    .about-avatar-hero {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .avatar-circle {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      border: 3px solid var(--glass-border);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .greeting-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      padding: 6px 18px;
+      border-radius: 999px;
+    }
+
+    /* ABOUT CONTENT GRID */
+    .about-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 50px;
+      align-items: start;
+      margin-bottom: 70px;
+    }
+
+    .about-bio-column {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    .main-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-main);
+      margin-bottom: 24px;
+    }
+    .bio-paragraph {
+      margin-bottom: 20px;
+    }
+
+    /* FAST FACTS SIDEBAR CARD */
+    .fast-facts-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .fast-facts-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .facts-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .facts-list li {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .facts-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.4rem;
+      line-height: 0;
+    }
+
+    /* PHOTO GALLERY GRID */
+    .photo-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 70px;
+    }
+    .gallery-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .gallery-img-wrapper {
+      height: 180px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      background: var(--card-bg);
+    }
+    .gallery-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover .gallery-img-wrapper img {
+      transform: scale(1.06);
+    }
+    .gallery-caption {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* TESTIMONIALS GRID */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+    .testimonial-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .testimonial-text {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .author-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .author-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .author-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* BOTTOM CTA SECTION */
+    .cta-banner {
+      background: #030712;
+      color: #FFFFFF;
+      border-radius: 32px;
+      padding: 80px 48px;
+      text-align: center;
+      margin-bottom: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
+    }
+    .cta-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .cta-subtitle {
+      font-size: 1.1rem;
+      color: #94A3B8;
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #FFFFFF;
+      color: #030712;
+      padding: 16px 36px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    .cta-btn:hover {
+      background: var(--accent);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--partner-border);
+      padding: 40px 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .about-main-grid { grid-template-columns: 1fr; }
+      .photo-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .main-title { font-size: 2.2rem; }
+      .cta-title { font-size: 2.4rem; }
+    }
+    @media (max-width: 600px) {
+      .nav-menu { display: none; }
+      .mobile-menu-trigger { display: flex; }
+      .photo-gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- CUSTOM MOUSE CURSOR -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-dot"></div>
+   <!-- FLOATING NAVIGATION HEADER -->
+  <header>
+    <div class="nav-pill">
+      <div class="nav-brand">
+        <span class="brand-name">Ranajeet Gaware</span>
+      </div>
+
+      <!-- DESKTOP NAV MENU -->
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link ">Home</a>
+        <a href="work.html" class="nav-link ">Work</a>
+       <!-- <a href="#aix-process" class="nav-link">AIX Process</a>-->
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="nav-socials">
+          <a href="https://in.linkedin.com/in/ranajeetgaware" target="_blank" class="social-link">LinkedIn</a>
+          <a href="https://www.behance.net/ranajeet_gaware" target="_blank" class="social-link">Behance</a>
+          <a href="https://dribbble.com/RanjeetG" target="_blank" class="social-link">Dribble</a>
+        </div>
+        
+        <button id="theme-toggle" class="theme-toggle-btn">
+          <span id="theme-icon">☀️</span> <span id="theme-label">Light</span>
+        </button>
+
+        <!-- MOBILE HAMBURGER BUTTON -->
+        <button id="mobile-trigger" class="mobile-menu-trigger">
+          <span>Menu</span> ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- FULL SCREEN MOBILE MENU MODAL -->
+  <div id="mobile-nav-modal" class="mobile-nav-modal">
+    <div class="mobile-nav-header">
+      <div class="mobile-nav-brand-info">
+        <h3>Ranajeet Gaware</h3>
+        <span>Senior AI Product Designer</span>
+      </div>
+      <button id="mobile-close-btn" class="mobile-close-btn">Close</button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="index.html" class="mobile-menu-link">Home</a>
+      <a href="work.html" class="mobile-menu-link">Work</a>
+     <!-- <a href="#aix-process" class="mobile-menu-link">AIX Process</a>-->
+      <a href="about.html" class="mobile-menu-link active">About</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- AVATAR HEADER -->
+    <div class="about-avatar-hero">
+
+      <img 
+        src="Ranajeet_gaware_PC.png" alt="Ranajeet Gaware Portfolio" 
+        alt="Ranajeet Gaware" 
+        class="avatar-circle"
+      />
+      <div>
+        <span class="greeting-pill">Hey, I'm Ranajeet ✌️</span>
+      </div>
+    </div>
+
+    <!-- MAIN BIO & FAST FACTS SECTION -->
+    <section class="about-main-grid">
+      <div class="about-bio-column">
+        <h1 class="">From Vision to Execution, Still Designing Every Day.</h1>
+        <p class="bio-paragraph">
+          I am a Senior AI Product Designer focused on building complex B2B platforms, agentic workflows, and explainable decision systems across Fintech, BFSI, and Healthcare.
+        </p>
+        <p class="bio-paragraph">
+          With extensive experience designing mission-critical enterprise products, I bridge high-level product strategy with hands-on UI execution. I specialize in turning complex multi-agent intelligence into intuitive, transparent human-in-the-loop interfaces that enterprise teams can trust.
+        </p>
+        <p class="bio-paragraph">
+          I pride myself on building products that people love to use, and fostering design teams that people love to be part of.
+        </p>
+      </div>
+
+      <aside class="fast-facts-card">
+        <div class="fast-facts-title">FAST FACTS</div>
+        <ul class="facts-list">
+          <li>Based in India, working globally</li>
+          <li>Specializes in Agentic AI & Enterprise B2B</li>
+          <li>Focus: Fintech, BFSI & Healthcare</li>
+          <li>Mentor & Design Advisor</li>
+          <li>Passionate about system architecture & AI ethics</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- PHOTO GALLERY ROW 1 -->
+    <section class="photo-gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Design Review" />
+        </div>
+        <span class="gallery-caption">Design Team Sync</span>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="AI Architecture Workshop" />
+        </div>
+        <span class="gallery-caption">AI Architecture Session</span>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Speaking Event" />
+        </div>
+        <span class="gallery-caption">Keynote on Agentic AI</span>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Design Systems" />
+        </div>
+        <span class="gallery-caption">Building AIX Components</span>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION 
+    <section class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "Ranajeet has an incredible ability to take hyper-complex AI processes and transform them into intuitive, user-friendly enterprise interfaces. His leadership in UX design is unparalleled."
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Jessica Miller" class="author-img" />
+          <div>
+            <div class="author-name">Jessica Miller</div>
+            <div class="author-role">VP of Product, FinTech Labs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "Ranajeet is an exceptional design strategist. He constantly pushes the team to grow while maintaining an incredible standard of craft across complex agentic workflows."
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Jack Ferrel" class="author-img" />
+          <div>
+            <div class="author-name">Jack Ferrel</div>
+            <div class="author-role">Head of Engineering, HealthAI</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY ROW 2 -->
+    <section class="photo-gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80" alt="Strategy Session" />
+        </div>
+        <span class="gallery-caption">Mentoring Designers</span>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Team Collaboration" />
+        </div>
+        <span class="gallery-caption">User Research Review</span>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Workstation setup" />
+        </div>
+        <span class="gallery-caption">Prototyping Workflows</span>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" alt="Design Workshop" />
+        </div>
+        <span class="gallery-caption">Sample Workshop Sync</span>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="cta-banner">
+      <h2 class="cta-title">Let's build together</h2>
+      <p class="cta-subtitle">
+        I advise startups, mentor designers, and regularly connect with motivated teams to build reliable agentic systems.
+      </p>
+      <a href="mailto:rgaware@outlook.com" class="cta-btn">Reach out</a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <span>© 2026 Ranajeet Gaware</span>
+    <span>Senior AI Product Designer</span>
+  </footer>
+
+  <script>
+     // CUSTOM CURSOR MOVEMENT & HOVER
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.custom-cursor-dot');
+
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    });
+
+    document.querySelectorAll('a, button, .project-card-modern, input, select').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // THEME TOGGLE
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeLabel = document.getElementById('theme-label');
+    const htmlElement = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      setTheme(newTheme);
+    });
+
+    function setTheme(theme) {
+      htmlElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (theme === 'dark') {
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light';
+      } else {
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark';
+      }
+    }
+
+    // MOBILE MENU
+    const mobileTrigger = document.getElementById('mobile-trigger');
+    const mobileCloseBtn = document.getElementById('mobile-close-btn');
+    const mobileNavModal = document.getElementById('mobile-nav-modal');
+    const mobileLinks = document.querySelectorAll('.mobile-menu-link');
+
+    mobileTrigger.addEventListener('click', () => {
+      mobileNavModal.classList.add('active');
+      document.body.classList.add('menu-open');
+    });
+
+    mobileCloseBtn.addEventListener('click', () => {
+      mobileNavModal.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNavModal.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  </script>
+</body>
+</html>
